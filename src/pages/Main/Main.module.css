@@ -1,51 +1,6 @@
 .all{
     width:100%;
 }
-.navhead{
-    width:100%;
-    background:#fff;
-    height:80px;
-}
-.nav{
-    margin:0 auto;
-    height:100%;
-    max-width:1600px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.nav div input{
-    padding:10px;
-    font-size:20px;
-    border-radius:12px 0 0 12px;
-    border:1px solid #ddd;
-    outline:none;
-}
-.nav div input:focus{
-    border-color:#007bff;
-}
-.nav div button{
-    font-size:20px;
-    padding:10px;
-    border-radius:0 12px 12px 0;
-    border:1px solid #ddd;
-}
-.nav div button:hover{
-    cursor:pointer;
-    background:#f0f0f0b2;
-}
-.nav ul{
-    list-style:none;
-    display:flex;
-}
-.nav ul li{
-    margin:0 20px;
-    font-size:20px;
-}
-.nav ul li:hover{
-    cursor:pointer;
-    color:#007bff;
-}
 .container{
     margin:20px auto;
     max-width:1400px;

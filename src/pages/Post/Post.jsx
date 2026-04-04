@@ -66,7 +66,7 @@ function Post(){
                     value={desc} onChange={e=>{setDesc(e.target.value)}}></textarea>
                     {/*下面是对该文章进行分类的选项，用于后续主页的展示 */}
                     <div>
-                        <div cl assName={styles.category}>
+                        <div className={styles.category}>
                         <select value={category} onChange={handle} required>
                             <option value='' >请选择分类</option>
                             <option value="综合">综合</option>
