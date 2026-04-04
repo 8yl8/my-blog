@@ -1,0 +1,28 @@
+.aside{
+    max-width:220px;
+    border:1px solid #ddd;
+    background:#fff;
+}
+.asideList{
+    list-style:none;
+    text-align:center;
+
+}
+.asideList li{
+    font-size:20px;
+    padding:20px;
+    width:100%;
+}
+.asideList li:hover{
+    color:#1e80ff;
+    background:#f2f3f4;
+    cursor:pointer;
+    margin-right:20px;
+}
+.light{
+     color:#1e80ff;
+    background:#f2f3f4;
+    cursor:pointer;
+    margin-right:20px;
+}
+

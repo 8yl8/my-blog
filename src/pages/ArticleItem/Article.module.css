@@ -1,0 +1,31 @@
+.container{
+    max-width:1200px;
+    background:#fff;
+    margin:20px auto;
+}
+.head{
+    width:100%;
+    background:#fff;
+    margin-bottom:30px;
+}
+.head h1{
+    padding:20px 0 10px 20px;
+}
+.author{
+    border:none;
+}
+.articlebody{
+    text-indent:2rem;
+    margin:20px;
+    font-size:25px;
+    white-space:pre-wrap;
+}
+.like{
+    margin:60px 0 0 30px;
+    display:flex;
+    gap:20px;
+}
+.like button{
+    font-size:20px;
+    padding:10px;
+}

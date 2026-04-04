@@ -1,0 +1,40 @@
+.container{
+    max-width:1000px;
+    margin:10px auto;
+    background:#f2f3f4;
+    border:1px solid #ddd;
+}
+.container h2{
+    text-align:center;
+}
+.pub{
+    width:100%;
+    padding:20px;
+    margin:20px 0;
+    outline: none;
+    border:1px solid #ddd;
+    font-size:18px;
+    white-space:pre-wrap;
+}
+.pub:focus{
+    border-color :#1e2296;
+}
+.container div button{
+    font-size:20px;
+    padding:10px 30px;
+    margin:20px;
+    border-radius:12px;
+    background:#007bff;
+    color:#fff;
+    border:none;
+}
+.category{
+    font-size:20px;
+}
+.category select{
+    font-size:20px;
+}
+.container div button:hover{
+     cursor:pointer;
+    background:#00a2ff;
+}

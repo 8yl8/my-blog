@@ -1,0 +1,27 @@
+{
+  "comments": [],
+  "articles": [],
+  "users": [
+    {
+      "id": "1773675649852-3-tdx5va1ml",
+      "nickname": "贺治周",
+      "userIntro": "我喜欢唱，跳，rap，篮球",
+      "fans": 0,
+      "like": 0,
+      "password": "3",
+      "username": "3"
+    },
+    {
+      "id": "1773848921934-admin-q8n3zdru2",
+      "nickname": "我是贺治州",
+      "password": "123",
+      "username": "admin",
+      "userIntro": "我like",
+      "fans": 0,
+      "like": 0
+    }
+  ],
+  "like": [],
+  "collect": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

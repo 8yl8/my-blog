@@ -1,0 +1,54 @@
+import styles from './Navhead.module.css'
+import { useNavigate,useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useAuth } from '../../hooks/useAuth'
+import { usePermission } from '../../hooks/usePermission.js'
+function Navhead(){
+       const [reach,setReach]=useState('')
+    const navigate=useNavigate()
+    const {category}=useParams()
+     const {token,exit}=useAuth()
+     const {checkPermission}=usePermission()
+    const post=()=>{
+       if(checkPermission()){
+        navigate('/post')
+       }
+    }
+    const goHome=()=>navigate('/')
+    const mydetail=()=>{
+         if(checkPermission()){
+       navigate(`/author/${token}?check=我的`)
+       }
+    }
+    const handleLogout=()=>{
+        exit()
+        navigate('/login')
+    }
+    
+    const handleSearch=()=>{
+        if(!reach) return
+            navigate(`/${category}?search=${encodeURIComponent(reach)}`)
+        }
+       
+    return (
+        <div>
+             <header className={styles.navhead}>
+                    <div className={styles.nav}>
+                        <h1>我的博客</h1>
+                        <div>
+                            <input type="text" placeholder='请输入搜索的内容' name='reach' 
+                            value={reach} onChange={e=>{setReach(e.target.value.trim())}}/>
+                            <button type='button' onClick={handleSearch}>搜索</button>
+                        </div>
+                        <ul>
+                            <li onClick={goHome}>首页</li>
+                            <li onClick={post}>发表</li>
+                            <li onClick={mydetail}>我的</li>
+                            <li onClick={handleLogout}>退出登录</li>
+                        </ul>
+                    </div>
+                    </header>
+        </div>
+    )
+}
+export default Navhead

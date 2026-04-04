@@ -1,0 +1,67 @@
+.commont{
+    width: 100%;
+    /* background: #ddd; */
+    font-size:20px;
+    position: relative;
+    border-top:2px solid #ddd;
+}
+.commontbody{
+    flex:5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.reply{
+    display:flex;
+    justify-content:space-between;
+}
+.reply button{
+     cursor:pointer;
+    margin:10px 5px;
+    font-size:16px;
+    width: 80px;
+    height: 50px;
+    border:none;
+    background: #f2f3f4;
+    border-radius:20px;
+}
+
+.Recommanded{
+    border:none;
+}
+.commontbody p{
+    font-size: 20px;
+    margin-left:50px;
+    max-width: 750px;
+}
+.Input{
+    width:750px;
+    margin-left:50px;
+    display: flex;
+}
+.Input textarea{
+    padding:10px;
+    font-size:20px;
+    width:750px;
+}
+.Input button:nth-child(2){
+    font-size:17px;
+    width:55px;
+    height: 60px;
+    cursor:pointer;
+    margin:10px -10px;
+}
+.Input button:nth-child(3){
+    font-size:17px;
+    width:55px;
+    height: 60px;
+    cursor:pointer;
+    margin:10px 10px;
+}
+
+.childCommonts{
+    flex:5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
