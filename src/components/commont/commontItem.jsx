@@ -1,4 +1,4 @@
-import styles from './CommontItem.module.css'
+import styles from './commontItem.module.css'
 import Recommanded from '../recommand/Recommanded'
 import { useState } from 'react'
 import { useLike } from '../../hooks/useLike'
