@@ -69,7 +69,7 @@ function CommontChild(props){
                         ondetail={ondetail} content={childItem.content}
                         child={childItem.child} level={level+1} username={childItem.username} 
                         like={childItem.like} user={childItem.user} change={change} 
-                        article_id={childItem.article_id} deletecomment={deletecomment}/>
+                        article_id={childItem.article_id} deletecomment={deletecomment} token={token}/>
                     })}  
                 </div>
                 )}

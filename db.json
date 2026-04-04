@@ -1,6 +1,36 @@
 {
-  "comments": [],
-  "articles": [],
+  "comments": [
+    {
+      "id": "1775320646315-1-iwg8wlaub",
+      "content": "111",
+      "like": 1,
+      "parent_id": null,
+      "username": "1",
+      "time": 1775320646315,
+      "article_id": "1775320623259-1"
+    },
+    {
+      "id": "1775320658307-1-k84s4w3tj",
+      "content": "222",
+      "like": 0,
+      "parent_id": "1775320646315-1-iwg8wlaub",
+      "username": "1",
+      "time": 1775320658307,
+      "article_id": "1775320623259-1"
+    }
+  ],
+  "articles": [
+    {
+      "id": "1775320623259-1",
+      "username": "1",
+      "nickname": "用户",
+      "Title": "1",
+      "desc": "1",
+      "category": "综合",
+      "like": 1,
+      "collect": 1
+    }
+  ],
   "users": [
     {
       "id": "1775319354410-1-3mdeg6fk1",
@@ -12,7 +42,26 @@
       "like": 0
     }
   ],
-  "like": [],
-  "collect": [],
+  "like": [
+    {
+      "id": "1775320629585-1-97ct16dxn",
+      "like_target": "article",
+      "target_id": "1775320623259-1",
+      "username": "1"
+    },
+    {
+      "id": "1775320649361-1-3i0dr1rku",
+      "like_target": "comment",
+      "target_id": "1775320646315-1-iwg8wlaub",
+      "username": "1"
+    }
+  ],
+  "collect": [
+    {
+      "id": "1775320630345-1-jdnkceetq",
+      "target_id": "1775320623259-1",
+      "username": "1"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
