@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useLike } from '../../hooks/useLike'
 function CommontChild(props){
     //传的是每个评论的各种属性包括回调函数
-    const {id,ondetail,content,child,level,like,article_id,userId,deletecomment,user_id,nickname,avatar}=props
+    const {id,ondetail,content,child,level,like,article_id,userId,deletecomment,user_id,nickname,avatar,comments}=props
      const [childContent,setChildContent]=useState('')
     const [show,setShow]=useState(false)
     const {post}=useLike()
@@ -36,7 +36,10 @@ function CommontChild(props){
                     <Recommanded className={styles.Recommanded} nickanem={nickname} avatar={avatar}/>   
                     <div>
                     <button onClick={Show}>回复</button>
-                    <button onClick={()=>post(userId,article_id,'comment')}>喜欢<span>{like}</span></button>
+                    <button onClick={()=>{
+                        post(userId,article_id,'comment')
+                        comments()
+                    }}>喜欢<span>{like}</span></button>
                      {userId===user_id?<button onClick={()=>deletecomment(id)}>删除</button>:null}
                   
                     </div> 
@@ -68,7 +71,8 @@ function CommontChild(props){
                         ondetail={ondetail} content={childItem.content}
                         child={childItem.child} level={level+1} nickname={childItem.nicanme} avatar={childItem.avatar}
                         like={childItem.like} user_id={childItem.user_id} userId={userId}
-                        article_id={childItem.article_id} deletecomment={deletecomment} />
+                        article_id={childItem.article_id} deletecomment={deletecomment} 
+                        comments={comments}/>
                     })}  
                 </div>
                 )} 

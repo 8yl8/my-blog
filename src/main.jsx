@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { UserProvider } from './context/UserContext.js'
+import { UserProvider } from './context/UserContext.jsx'
 import styles from './index.module.css'
 import App from './App.jsx'
 

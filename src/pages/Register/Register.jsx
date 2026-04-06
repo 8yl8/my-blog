@@ -26,7 +26,7 @@ function Register(){
                 navigate('/login')
                 return
             }
-            alert(res.err.response?.data?.message||'注册失败')
+            alert(res.err.response?.data?.message||'注册失败') 
     }
     return (
         <div className={styles.container}>

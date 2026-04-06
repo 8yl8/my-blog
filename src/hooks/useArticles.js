@@ -66,7 +66,6 @@ export const useArticles=()=>{
             desc:desc,
             category:category
         })
-        get()
         return {success:true,msg:'编辑成功'}
     }
     const Delete=async(id)=>{

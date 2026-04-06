@@ -39,7 +39,7 @@ export const useAuthor=()=>{
         setArticles(temp)
     }  
     const patchUser=async(newuser)=>{
-        const {data}=await patchuser(currentuser,{nickname:newuser.nickname,userIntro:newuser.userIntro})
+        const {data}=await patchuser(userId,{nickname:newuser.nickname,userIntro:newuser.userIntro})
        setCurrentuser(data)
     }
     useEffect(()=>{

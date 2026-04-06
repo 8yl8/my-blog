@@ -1,9 +1,10 @@
 import { useState,useContext } from "react";
 import { getLike,postLike,deleteLike } from "../api/auth";
 import UserContext from "../context/UserContext";
-
+import { usePermission } from "./usePermission";
 export const useLike=()=>{
   const {userId}=useContext(UserContext)
+  const {permission}=usePermission()
     const [count,setCount]=useState(0)
     
     const get=async(id)=>{
@@ -15,20 +16,18 @@ export const useLike=()=>{
     }
     const post=async(user_id,target_id,like_target)=>{
         try{
-            const token=localStorage.getItem('token')
-         if(!token){
-            alert('请先登录')
-            return
-        }
-         const like={
+          if(permission()){
+            const like={
             user_id:user_id,
             target_id:target_id,
             like_target:like_target
         }
         await postLike(like)
-        }catch(err){
+    }else{
+        return
+    }   
+    }catch(err){
        console.log(err);
-       
         }    
     }
     const deletelike=async(id)=>{

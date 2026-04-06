@@ -4,7 +4,7 @@ import CommontChild from './commontItem'
 import { useComment } from '../../hooks/useComment'
 import UserContext from '../../context/UserContext'
 function Commont(){
-    const {allComment,push,deletecomment} =useComment()
+    const {allComment,push,deletecomment,comments} =useComment()
     const [content,setContent]=useState('')
     const {userId}=useContext(UserContext)
     return (
@@ -15,7 +15,8 @@ function Commont(){
                     return <CommontChild key={item.id} id={item.id} 
                    ondetail={push} content={item.content} child={item.child} 
                    level={0} like={item.like} user_id={item.user_id} nickname={item.nickname} avatar={item.avatar}
-                   article_id={item.article_id} userId={userId} deletecomment={deletecomment} />
+                   article_id={item.article_id} userId={userId} deletecomment={deletecomment} 
+                   comments={comments}/>
                 })}
                 </div>
                  : <h1>暂无评论</h1> }
