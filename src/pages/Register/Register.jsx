@@ -7,7 +7,7 @@ function Register(){
      const [username,setUsername]=useState('')
      const [password,setPassword]=useState('')
     const [rePassword,setrePassword]=useState('')
-    const {register}=useRegister()
+    const {doregister}=useRegister()
     function Return(){
         navigate('/login')
     }
@@ -20,19 +20,13 @@ function Register(){
         alert('两次密码不对')
         return
        }
-       try{
-            const res=await register({username,password})
+            const res=await doregister({username,password})
             if(res.success){
-                alert(res.msg)
-                console.log(res.data)
+                alert(res.message)
                 navigate('/login')
                 return
             }
-           throw new Error('用户名已存在')
-            
-       }catch(err){
-            alert(err.message)
-       }
+            alert(res.err.response?.data?.message||'注册失败')
     }
     return (
         <div className={styles.container}>

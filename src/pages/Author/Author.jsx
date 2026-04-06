@@ -59,7 +59,7 @@ function Author(){
                     <div className={styles.cardbox}>
                   {articles?articles.map((item)=>{
                     return <Card className={styles.detail} key={item.id}
-                    title={item.Title} desc={item.desc} id={item.id} ondetail={detail}/>
+                    title={item.title} desc={item.desc} id={item.id} ondetail={detail}/>
                   }):null
                   }
                     </div>

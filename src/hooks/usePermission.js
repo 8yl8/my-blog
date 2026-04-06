@@ -1,7 +1,5 @@
-import { useNavigate } from "react-router-dom"
 import { useAuth } from "./useAuth"
 export const usePermission=()=>{
-    const navigate=useNavigate()
     const {token}=useAuth()
      const permission=()=>{
          if(!token){
@@ -10,14 +8,5 @@ export const usePermission=()=>{
         }
         return true
     }
-     
-     const checkPermission=()=>{
-        const t=permission()
-        if(!t){
-            navigate('/login')
-            return false
-        }
-        return true
-    }
-    return {checkPermission}
+    return {permission}
 }

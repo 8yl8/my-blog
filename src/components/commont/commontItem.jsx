@@ -4,10 +4,9 @@ import { useState } from 'react'
 import { useLike } from '../../hooks/useLike'
 function CommontChild(props){
     //传的是每个评论的各种属性包括回调函数
-    const {id,ondetail,content,child,level,like,user,username,change,article_id,token,deletecomment}=props
+    const {id,ondetail,content,child,level,like,article_id,userId,deletecomment,user_id,nickname,avatar}=props
      const [childContent,setChildContent]=useState('')
     const [show,setShow]=useState(false)
-    const t=token.split('-')[1]
     const {post}=useLike()
     const Commonts={
         marginLeft:level===1?'100px':'0'
@@ -21,7 +20,7 @@ function CommontChild(props){
     }
     const detail=()=>{
         if(childContent){
-        ondetail(childContent,id)
+        ondetail(userId,article_id,id,childContent)
         setShow(false)
         setChildContent('')
         }
@@ -34,11 +33,11 @@ function CommontChild(props){
             <div>
                 <div className={styles.commontbody}>
                 <div className={styles.reply}>
-                    <Recommanded className={styles.Recommanded} user={user}/>   
+                    <Recommanded className={styles.Recommanded} nickanem={nickname} avatar={avatar}/>   
                     <div>
                     <button onClick={Show}>回复</button>
-                    <button onClick={()=>post(username,id,'comment',change)}>喜欢<span>{like}</span></button>
-                     {t===article_id.split('-')[1]||t===username?<button onClick={()=>deletecomment(null,id)}>删除</button>:null}
+                    <button onClick={()=>post(userId,article_id,'comment')}>喜欢<span>{like}</span></button>
+                     {userId===user_id?<button onClick={()=>deletecomment(id)}>删除</button>:null}
                   
                     </div> 
                 </div>
@@ -67,12 +66,12 @@ function CommontChild(props){
                     {child.map((childItem)=>{
                        return  <CommontChild key={childItem.id} id={childItem.id}
                         ondetail={ondetail} content={childItem.content}
-                        child={childItem.child} level={level+1} username={childItem.username} 
-                        like={childItem.like} user={childItem.user} change={change} 
-                        article_id={childItem.article_id} deletecomment={deletecomment} token={token}/>
+                        child={childItem.child} level={level+1} nickname={childItem.nicanme} avatar={childItem.avatar}
+                        like={childItem.like} user_id={childItem.user_id} userId={userId}
+                        article_id={childItem.article_id} deletecomment={deletecomment} />
                     })}  
                 </div>
-                )}
+                )} 
           </div>
             </div>
        

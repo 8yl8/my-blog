@@ -1,28 +1,25 @@
 import styles from './Login.module.css'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import { useLogin } from '../../hooks/useLogin.js'
 import { useNavigate } from 'react-router-dom'
 function Login(){
     const [ username,setUsername ]=useState('')
     const [ password,setPassword ]=useState('')
     const navigate=useNavigate()
-    const {login}=useLogin()
+    const {dologin}=useLogin()
     async function submit(e){
         e.preventDefault()
         if(!username.trim()||!password.trim()){
             alert('请输入账号和密码')
             return
         }
-        try{
-            const res=await login({username,password})
+            const res=await dologin({username,password})
+            
             if(res.success){
+                alert(res.msg)
             navigate('/')
-            }else{
-               throw new Error(res.msg)
             }
-        }catch(err){
-            alert(err.message)
-        }
+            alert(res.error.response?.data?.message)
     }
     function register(){
         navigate('/register')

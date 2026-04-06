@@ -1,39 +1,40 @@
-import { useEffect, useState } from "react"
-import { getuser,getarticles,getLike,getCollect,patchuser } from "../api/auth"
+import { useEffect, useState,useContext } from "react"
+import { getuser,getarticles,getCollect,patchuser,getUserLike } from "../api/auth"
 import { useSearchParams } from "react-router-dom"
+import UserContext from "../context/UserContext"
 export const useAuthor=()=>{
-    const token=localStorage.getItem('token')
-    const username=token.split('-')[1]
     const [currentuser,setCurrentuser]=useState(null)
     const [articles,setArticles]=useState([])
     const [searchParams]=useSearchParams()
     const check=searchParams.get('check')
+    const {userId}=useContext(UserContext)
     const nowuser=async() => {
-        const {data}=await getuser()
+        try{
+        const {data}=await getuser(userId)
         if(data){
-            const temp=data.find(item=>item.username===username)
-            setCurrentuser(temp)
+            setCurrentuser(data)
         }
+        }catch(err){
+            console.log(err);
+        }
+       
     }
-    const userarticles=async()=>{
+    const userarticles=async(check)=>{
         const {data}=await getarticles()
-        const {data:like}=await getLike()
-        const {data:collect}=await getCollect()
+        const {data:like}=await getUserLike(userId)
+        const {data:collect}=await getCollect(userId)
         let temp=[]
         if(data&&check=='我的'){
-            temp=data.filter(item=>item.username===username)            
+            temp=data.filter(item=>item.user_id===userId)
         }else if(check==='喜欢'){        
-         const c=like.filter(item=>item.like_target==='article'&&item.username===username)
-        c.forEach(item=>{
-            temp.push(data.find(all=>all.id===item.target_id))
-        })   
+            const set=new Set(like.filter(item=>item.user_id===userId)
+            .map(item=>item.target_id)
+        )
+            temp=data.filter(item=>set.has(item.id))
         }else if(check==='收藏'){
-            if(collect){
-                const c=collect.filter(item=>item.username===username)
-                c.forEach(item=>{
-                    temp.push(data.find(all=>all.id===item.target_id))
-                })
-            }
+           const set=new Set(collect.filter(item=>item.user_id===userId)
+        .map(item=>item.target_id))
+           temp=data.filter(item=>set.has(item.id))
         }
         setArticles(temp)
     }  

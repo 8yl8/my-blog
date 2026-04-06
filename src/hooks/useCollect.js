@@ -1,38 +1,17 @@
-import {getCollect,deleteCollect, postCollect } from "../api/auth"
+import {getCollect, postCollect } from "../api/auth"
+import { usePermission } from "./usePermission"
 export const useCollect=()=>{
-    const token=localStorage.getItem('token')
-    const username=token.split('-')[1]
-    const collect=async(target_id,change)=>{
-        const {data}=await getCollect()
-        if(data&&username){
-            const hasdata=data.find(item=>item.username===username&&item.target_id===target_id)
-            if(hasdata){
-                await deleteCollect(hasdata.id)
-            }else{
-                const temp={
-                    target_id:target_id,
-                    username:username,
-                   id:Date.now()+'-'+username+'-'+Math.random().toString(36).substring(2,11),
-                }
-                await postCollect(temp)
+   const {permission}=usePermission()
+    const collect=async(user_id,target_id)=>{
+        if(permission()){
+            const temp={
+                target_id:target_id,
+                user_id:user_id
             }
-            if(change){
-                const {data}=await getCollect()
-                const newCount=data.filter(item=>item.target_id===target_id).length
-                change(target_id,newCount)
-            }
+            await postCollect(temp)
+        }else{
+            return
         }
-        
-      
     }
-    const deletecollect=async(id)=>{
-        const {data}=await getCollect()
-        const deletecollect=data.filter(item=>item.target_id===id)
-        await Promise.all(
-            deletecollect.map(item=>
-                deleteCollect(item.id)
-            )
-        )
-    }
-    return {collect,deletecollect}
+    return {collect}
 }

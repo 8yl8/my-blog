@@ -8,15 +8,15 @@ function Navhead(){
     const navigate=useNavigate()
     const {category}=useParams()
      const {token,exit}=useAuth()
-     const {checkPermission}=usePermission()
+     const {permission}=usePermission()
     const post=()=>{
-       if(checkPermission()){
+       if(permission()){
         navigate('/post')
        }
     }
     const goHome=()=>navigate('/')
     const mydetail=()=>{
-         if(checkPermission()){
+         if(permission()){
        navigate(`/author/${token}?check=我的`)
        }
     }

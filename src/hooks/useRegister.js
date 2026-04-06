@@ -1,29 +1,14 @@
-import {postuser} from '../api/auth'
-import {getuser} from '../api/auth'
+import {register} from '../api/auth'
 export const useRegister=()=>{
-    const register=async({username,password})=>{
+    const doregister=async({username,password})=>{
         try{
-        const {data} =await getuser()
-       const t=data.find(item=>item.username===username)
-       if(!t){
-        const user={
-        id:Date.now()+'-'+username+'-'+Math.random().toString(36).substring(2,11),
-        nickname:'用户',
-        password:password,
-        username:username,
-        userIntro: "暂无简介",
-        fans: 0,
-        like: 0,
-      }
-     const {data}=await postuser(user)
-     return {success:true,msg:'注册成功',data}
-       }else{
-        throw new Error('注册失败，用户名已存在')
-       }
+        const user={username,password}
+       await register(user)
+       return {success:true,message:'注册成功'}
         }catch(err){
-            return {success:false,msg:'注册失败，用户名已存在'}
+            return {success:false,err}
         }
-  
+    
     }
-    return {register}
+    return {doregister}
 }

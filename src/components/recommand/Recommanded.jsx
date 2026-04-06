@@ -3,14 +3,12 @@ import img1 from '../../img/1.jpg'
 import { useEffect, useState } from 'react'
 
 function Recommanded(props){
-    const {className='',user}=props
+    const {className='',nickname,avatar}=props
     const [postUser,setPostUser]=useState('')
 
     useEffect(()=>{
-         if(user){
-    setPostUser(user.nickname)
- }
-    },[user])
+    setPostUser(nickname)
+    },[nickname])
     return (    
         <div className={`${styles.rside} ${className}`}>
                    <a>

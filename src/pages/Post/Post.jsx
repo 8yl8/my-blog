@@ -14,34 +14,27 @@ function Post(){
         if(location.state?.istrue){
         setDesc(location.state.article.desc)
         setTitle(location.state.article.Title)
-    }  
+    } 
     },[])
     
    async function submit(e){
         e.preventDefault()
-        try{
             if(t){
                 const res=await patch(location.state.article.id,title,desc,category)
                if(res.success){
                 alert(res.msg)
                 navigate(`/article?id=${location.state.article.id}`)
                }else{
-                throw new Error('编辑失败')
+                alert('编辑失败')
             }
             }else{
-                 const res=await post(title,desc,category)
+            const res=await post(title,desc,category)
             if(res.success){
                 alert(res.msg)
                 navigate('/')
-            }else{
-                throw new Error('输入不能为空')
             }
+               alert(res.msg)
             }
-           
-        }catch(err){
-            alert(err.message);
-            
-        }
     }
     function Return(){
             navigate('/')

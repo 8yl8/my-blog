@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { getLike,postLike,deleteLike } from "../api/auth";
+import UserContext from "../context/UserContext";
+
 export const useLike=()=>{
-  
+  const {userId}=useContext(UserContext)
     const [count,setCount]=useState(0)
     
     const get=async(id)=>{
@@ -11,37 +13,23 @@ export const useLike=()=>{
             setCount(temp.length)
         }
     }
-    const post=async(username,target_id,like_target,change,changearticle)=>{
-          const token=localStorage.getItem('token')
-         
+    const post=async(user_id,target_id,like_target)=>{
+        try{
+            const token=localStorage.getItem('token')
          if(!token){
             alert('请先登录')
             return
         }
-         let username1=username||token.split('-')[1]
-        const {data}=await getLike()
-       
-        const hasuser=data.find(item=>item.username===username1&&item.target_id===target_id)
-        if(hasuser){
-            await deleteLike(hasuser.id)
-        }else{
-             const temp={
-            like_target:like_target,
+         const like={
+            user_id:user_id,
             target_id:target_id,
-            username:username1,
-            id:Date.now()+'-'+username1+'-'+Math.random().toString(36).substring(2,11),
+            like_target:like_target
         }
-        await postLike(temp)
-        }
-       const {data:update}=await getLike()
-       const newCount=update.filter(item=>item.target_id===target_id).length
-       setCount(newCount)
-          if(change){
-                change(target_id,newCount)
-            }
-            if(changearticle){
-                changearticle(target_id,newCount)
-            }
+        await postLike(like)
+        }catch(err){
+       console.log(err);
+       
+        }    
     }
     const deletelike=async(id)=>{
         const {data}=await getLike()
