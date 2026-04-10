@@ -12,27 +12,27 @@ const Author=lazy(()=>import('./pages/Author/Author'))
 const router=createBrowserRouter([
   {
     path:'/login',
-    element:<Suspense fallback={<div>加载中...</div>}><Login/></Suspense>
+    element:<Login/>
   },
   {
     path:'/register',
-    element:<Suspense fallback={<div>加载中...</div>}><Register/></Suspense>
+    element:<Register/>
   },
   {
     path:'/:category',
-    element:<Suspense fallback={<div>加载中...</div>}><Main /></Suspense>
+    element:<Main />
   },
   {
     path:'/post',
-    element:<Suspense fallback={<div>加载中...</div>}><Post /></Suspense>
+    element:<Post />
   },
   {
     path:'/article',
-    element:<Suspense fallback={<div>加载中...</div>}><Article /></Suspense>
+    element:<Article />
   },
   {
-    path:'/author/:token',
-    element:<Suspense fallback={<div>加载中...</div>}><Author /></Suspense>
+    path:'/author',
+    element:<Author />
   },
   {
     path:'/',
@@ -41,7 +41,10 @@ const router=createBrowserRouter([
 ])
 function App() {
   
-  return <RouterProvider router={router}/>
+  return (
+  <Suspense fallback={<div>加载中...</div>}>
+   <RouterProvider router={router}/>
+    </Suspense>)
   
 }
 

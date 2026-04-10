@@ -1,0 +1,55 @@
+.avatar{
+    background:#faf8f5;
+    width: 500px;
+    height: 500px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border:2px solid #fff;
+}
+.avatar img{
+    width: 200px;
+    height: 200px;
+    border-radius :50%;
+    display: block;
+    margin:50px 0 50px 150px;
+}
+.choose{
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin:0 auto;
+    position: relative;
+    border-radius:10px;
+    background:#1ebef3f8;
+    color:#fff;
+    border:none;
+    font-size:20px;
+}
+.choose:hover{
+     background:#1ee5f3;
+}
+.choose input{
+    width: 100%;
+    cursor:pointer;
+    height: 100%;
+    opacity: 0;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.btn{
+    font-size:20px;
+    width:100px;
+    margin:10px 70px;
+    border-radius:10px;
+    background:#1ebef3f8;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.btn:hover{
+     background:#1ee5f3;
+}
+

@@ -1,14 +1,21 @@
 import styles from './Navhead.module.css'
 import { useNavigate,useParams } from 'react-router-dom'
-import { useState } from 'react'
+import {  useMemo, useRef, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { usePermission } from '../../hooks/usePermission.js'
+import { debounce } from '../../utils/debounce.js'
 function Navhead(){
        const [reach,setReach]=useState('')
+       const reachRef=useRef()
+       const categoryRef=useRef()
+      
     const navigate=useNavigate()
     const {category}=useParams()
-     const {token,exit}=useAuth()
+     const {exit}=useAuth()
      const {permission}=usePermission()
+     const token=localStorage.getItem('token')||null
+      reachRef.current=reach
+       categoryRef.current=category
     const post=()=>{
        if(permission()){
         navigate('/post')
@@ -17,7 +24,7 @@ function Navhead(){
     const goHome=()=>navigate('/')
     const mydetail=()=>{
          if(permission()){
-       navigate(`/author/${token}?check=我的`)
+       navigate(`/author?check=我的`)
        }
     }
     const handleLogout=()=>{
@@ -25,11 +32,12 @@ function Navhead(){
         navigate('/login')
     }
     
-    const handleSearch=()=>{
-        if(!reach) return
-            navigate(`/${category}?search=${encodeURIComponent(reach)}`)
-        }
-       
+    const handleSearch=useMemo(()=>{
+       return debounce(()=>{
+        if(!reachRef.current) return
+            navigate(`/${categoryRef.current}?search=${encodeURIComponent(reachRef.current)}`)
+        },300,{immediate:true})
+    },[])
     return (
         <div>
              <header className={styles.navhead}>
@@ -44,7 +52,7 @@ function Navhead(){
                             <li onClick={goHome}>首页</li>
                             <li onClick={post}>发表</li>
                             <li onClick={mydetail}>我的</li>
-                            <li onClick={handleLogout}>退出登录</li>
+                         {token? <li onClick={handleLogout}>退出登录</li>: <li onClick={handleLogout}>登录</li>}  
                         </ul>
                     </div>
                     </header>

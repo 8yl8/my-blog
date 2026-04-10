@@ -14,10 +14,10 @@ function Login(){
             return
         }
             const res=await dologin({username,password})
-            
             if(res.success){
                 alert(res.msg)
             navigate('/')
+            return
             }
             alert(res.error.response?.data?.message)
     }

@@ -10,7 +10,7 @@ function Edit(props){
         <div className={styles.container}>
             <div className={styles.body}>
              <div className={styles.Return}>
-                <button onClick={()=>callback(false)}>返回</button>
+                <button onClick={()=>callback()}>返回</button>
              </div>
             <h1>编辑</h1>
             <div className={styles.editbody}>
@@ -21,7 +21,7 @@ function Edit(props){
                 <div className={styles.buttonbody}>
                     <button onClick={()=>{
                         patchUser(newuser)        
-                        callback(false)}}>修改</button>
+                        callback()}}>修改</button>
                     </div>
                 </div>
             </div>

@@ -6,14 +6,15 @@ function Post(){
     const [title,setTitle]=useState('')
     const [desc,setDesc]=useState('')
     const [category,setCategory]=useState('')
-    const {post,patch}=useArticles()
+    const {post,patch,postcover}=useArticles()
      const navigate=useNavigate()
     const location=useLocation()
     const t=location.state?true:false
     useEffect(()=>{
         if(location.state?.istrue){
         setDesc(location.state.article.desc)
-        setTitle(location.state.article.Title)
+        setTitle(location.state.article.title)
+        setCategory(location.state.article.category)
     } 
     },[])
     
@@ -32,6 +33,7 @@ function Post(){
             if(res.success){
                 alert(res.msg)
                 navigate('/')
+                return
             }
                alert(res.msg)
             }
@@ -47,6 +49,17 @@ function Post(){
             alert('请选择类别')
             return
         }
+    }
+    function handlecover(e){
+        e.preventDefault()
+        const file=e.target.files[0]
+        if(!file){
+            alert('请选择封面')
+            return
+        }
+        const formdata=new FormData()
+        formdata.append('cover',file)
+        postcover(formdata)
     }
     return (
         <div className={styles.container}>
@@ -69,7 +82,7 @@ function Post(){
                             <option value="IOS">IOS</option>
                             <option value="人工智能">人工智能</option>
                         </select>
-                    
+                        <button type="button" className={styles.btn} onChange={(e)=>handlecover(e)}>选择封面<input type="file" accept="image/*" /></button>
                         </div>
                     </div>
                     {t?

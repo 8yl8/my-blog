@@ -14,6 +14,7 @@
 .reply{
     display:flex;
     justify-content:space-between;
+    position:relative;
 }
 .reply button{
      cursor:pointer;
@@ -22,7 +23,6 @@
     width: 80px;
     height: 50px;
     border:none;
-    background: #f2f3f4;
     border-radius:20px;
 }
 
@@ -64,4 +64,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+.like{
+    background: #4a6cf7;
+    color:#fff;
 }

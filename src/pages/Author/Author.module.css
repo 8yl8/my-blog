@@ -51,6 +51,7 @@
     width:100px;
     height:100px;
     border-radius:50%;
+    cursor:pointer;
 }
 .author h2{
     margin:20px 0;

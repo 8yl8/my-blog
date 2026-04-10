@@ -28,13 +28,28 @@
     color:#fff;
     border:none;
 }
+.container div button:hover{
+     cursor:pointer;
+    background:#00a2ff;
+}
 .category{
     font-size:20px;
 }
 .category select{
     font-size:20px;
 }
-.container div button:hover{
-     cursor:pointer;
-    background:#00a2ff;
+.btn{
+    background: #00a2ff;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+.btn input{
+    cursor:pointer;
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
 }

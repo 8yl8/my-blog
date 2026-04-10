@@ -1,9 +1,10 @@
 .cardList{
     background:#fff;
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(200px,280px));
     gap:20px;
     padding:20px;
+    width:920px;
 }
 .nocard{
     width:800px;
