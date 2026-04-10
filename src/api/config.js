@@ -1,3 +1,3 @@
 export const config={
-    baseUrl:'http://localhost:3001'
+    baseUrl:'https://my-blog-hou-ogt7nrpy6l.edgeone.dev/'
 }
